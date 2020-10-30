@@ -1,10 +1,11 @@
 import React from "react";
 
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 
 import { useSelector } from "react-redux";
-import { FlatList } from "react-native-gesture-handler";
 
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import CustomHeaderButton from "../../components/UI/CustomHeaderButton";
 const OrderScreen = (props) => {
   const OrdersData = useSelector((state) => state.OrderReducer.orders);
 
@@ -12,14 +13,28 @@ const OrderScreen = (props) => {
   return (
     <FlatList
       data={OrdersData}
-      renderItem={(OrdersData) => <Text>OrdersData.item.amount</Text>}
+      renderItem={(OrdersData) => {
+        console.log(OrdersData);
+        return <Text>OrdersData.item.amount</Text>;
+      }}
     />
   );
 };
 
-OrderScreen.navigationOptions = () => {
+OrderScreen.navigationOptions = (navData) => {
   return {
     headerTitle: "Your Orders",
+    headerLeft: (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title="MENU"
+          iconName="md-menu"
+          onPress={() => {
+            navData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    ),
   };
 };
 

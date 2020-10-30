@@ -7,6 +7,7 @@ import {
   DELETE_FOR_USER,
   CREATE_NEW_ITEM,
   EDIT_EXISTING_ITEM,
+  FETCH_PRODUCTS,
 } from "../actions/products";
 import ProductModal from "../../modals/product";
 
@@ -18,15 +19,21 @@ const initialstate = {
 const ProductReducer = (state = initialstate, action) => {
   switch (action.type) {
     case DELETE_FOR_USER:
-      console.log(action.payload.itemId);
+      // console.log(action.payload.itemId);
+      // return {
+      //   ...state,
+      //   availableProducts: state.availableProducts.filter(
+      //     (product) => product.id !== action.payload.itemId
+      //   ),
+      //   userProducts: state.userProducts.filter(
+      //     (product) => product.id !== action.payload.itemId
+      //   ),
+      // };
+      console.log("action.payload", action.payload);
       return {
         ...state,
-        availableProducts: state.availableProducts.filter(
-          (product) => product.id !== action.payload.itemId
-        ),
-        userProducts: state.userProducts.filter(
-          (product) => product.id !== action.payload.itemId
-        ),
+        availableProducts: action.payload,
+        userProducts: action.payload.filter((prod) => prod.ownerId === "u1"),
       };
     case CREATE_NEW_ITEM:
       const { id, title, description, imageUrl, price } = action.payload;
@@ -49,6 +56,13 @@ const ProductReducer = (state = initialstate, action) => {
     case EDIT_EXISTING_ITEM:
       console.log("PURANA EDIT KARENGE");
       return state;
+    case FETCH_PRODUCTS:
+      console.log("action.payload", action.payload);
+      return {
+        ...state,
+        availableProducts: action.payload,
+        userProducts: action.payload.filter((prod) => prod.ownerId === "u1"),
+      };
   }
   return state;
 };

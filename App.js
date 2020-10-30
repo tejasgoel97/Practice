@@ -7,7 +7,7 @@ import { AppLoading } from "expo";
 import * as Font from "expo-font";
 
 //IMPORTS FOR REDUX
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./store/reducers/RootReducer";
 
@@ -17,7 +17,10 @@ import ProductOverviewScreen from "./screens/shop/ProductOverviewScreen";
 //IMPORT NAVIGATOR
 import ShopNavigator from "./navigation/ShopNavigator";
 
-const store = createStore(rootReducer);
+//IMPORT THUNK
+import ReduxThunk from "redux-thunk";
+
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const fetchFonts = () => {
   return Font.loadAsync({
