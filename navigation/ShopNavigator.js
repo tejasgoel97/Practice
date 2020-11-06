@@ -10,6 +10,7 @@ import { createDrawerNavigator } from "react-navigation-drawer";
 import ProductOverviewScreen from "../screens/shop/ProductOverviewScreen";
 import ProductDetailScreen from "../screens/shop/ProductDetailScreen";
 import OrderScreen from "../screens/shop/OrderScreen";
+import OrderDetailScreen from "../screens/shop/OrderDetailScreen";
 import CartScreen from "../screens/shop/CartScreen";
 import EditProductScreen from "../screens/user/EditProductScreen";
 import UserProductScreen from "../screens/user/UserProductScreen";
@@ -35,15 +36,15 @@ const productsNavigator = createStackNavigator(
     OrderScreen: OrderScreen,
     CartScreen: CartScreen,
   },
-  {
-    navigationOptions: {
-      headerStyle: { backgroundColor: "purple" },
+  // {
+  //   navigationOptions: {
+  //     headerStyle: { backgroundColor: "purple" },
 
-      drawerIcon: (drawerConfig) => (
-        <Ionicons name="md-cart" size={23} style={{ color: "#FFF" }} />
-      ),
-    },
-  },
+  //     // drawerIcon: (drawerConfig) => (
+  //     //   <Ionicons name="md-cart" size={23} style={{ color: "#FFF" }} />
+  //     // ),
+  //   },
+  // },
   {
     defaultNavigationOptions: {
       headerStyle: {
@@ -59,14 +60,15 @@ const productsNavigator = createStackNavigator(
 const OrdersNavigator = createStackNavigator(
   {
     OrderScreen: OrderScreen,
+    OrderDetailScreen: OrderDetailScreen,
   },
-  {
-    navigationOptions: {
-      drawerIcon: (drawerConfig) => (
-        <Ionicons name="md-list" size={23} color={drawerConfig.tintColor} />
-      ),
-    },
-  },
+  // {
+  //   navigationOptions: {
+  //     drawerIcon: (drawerConfig) => (
+  //       <Ionicons name="md-list" size={23} color={drawerConfig.tintColor} />
+  //     ),
+  //   },
+  // },
 
   {
     defaultNavigationOptions: DefaultNavOptionsDefined,
@@ -77,13 +79,13 @@ const AdminNavigator = createStackNavigator(
     UserProductScreen: UserProductScreen,
     EditProductScreen: EditProductScreen,
   },
-  {
-    navigationOptions: {
-      drawerIcon: (drawerConfig) => (
-        <Ionicons name="md-person" size={23} color={drawerConfig.tintColor} />
-      ),
-    },
-  },
+  // {
+  //   navigationOptions: {
+  //     drawerIcon: (drawerConfig) => (
+  //       <Ionicons name="md-person" size={23} color={drawerConfig.tintColor} />
+  //     ),
+  //   },
+  // },
   {
     defaultNavigationOptions: DefaultNavOptionsDefined,
   }

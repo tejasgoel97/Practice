@@ -2,6 +2,7 @@ import CartItems from "../../modals/cart-item";
 import { ADD_TO_CART, DELETE_FROM_CART } from "../actions/cart";
 import { DELETE_FOR_USER } from "../actions/products";
 import _ from "lodash";
+import { ADD_ORDERS } from "../actions/orders";
 
 const initialState = {
   items: {},
@@ -10,6 +11,9 @@ const initialState = {
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_ORDERS:
+      return initialState;
+
     case ADD_TO_CART:
       const addedProduct = action.payload.product;
       const prodPrice = addedProduct.price;

@@ -68,7 +68,7 @@ UserProductScreen.navigationOptions = (navData) => {
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title="MENU"
-          iconName="md-beer"
+          iconName="ios-add-circle"
           onPress={() => {
             navData.navigation.navigate("EditProductScreen");
           }}

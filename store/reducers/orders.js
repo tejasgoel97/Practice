@@ -1,4 +1,4 @@
-import { ADD_ORDERS } from "../actions/orders";
+import { ADD_ORDERS, FETCH_ORDERS } from "../actions/orders";
 
 import Order from "../../modals/OrderItem";
 const initialState = {
@@ -7,12 +7,16 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case FETCH_ORDERS:
+      return { orders: action.payload };
+
     case ADD_ORDERS:
+      console.log(action.payload.items);
       const newOrder = new Order(
-        new Date().toString(),
+        action.payload.id,
         action.payload.items,
         action.payload.orderAmount,
-        new Date()
+        action.payload.date
       );
       return {
         ...state,
